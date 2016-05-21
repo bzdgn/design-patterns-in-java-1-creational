@@ -1,0 +1,73 @@
+CONCEPTS;
+*********
+
+- Avoids costly creatino
+- Avoids subclassing
+- Typically doesn't use "new"
+- Often utilizes an Interface
+- Usually implemented with a Registry
+- Examples: java.lang.Object#clone()
+
+DESIGN;
+*******
+
+********************************
+*     Interface Prototype      *
+*______________________________*
+*                              *
+*______________________________*
+*  + clone()                   *
+*  + deepCopy()                *
+********************************
+
+- Prototype typically implements the Clone/Cloneeable method and interface
+	which enables us to avoid using the keyword "new"
+- The objects cloned are although a copy, each instances are unique
+- Different from patterns like Builder, costly construction not handled by client
+- The Builder Pattern is the opposite of Prototype pattern
+- Different from the Singleton Pattern, you can utilize the parameters in the clone
+	if you need to, but typically you don't. 
+- As the architect, you can choose whatever you want to do a Shallow Copy or Deep Copy
+- Shallow vs. Deep Copy
+
+Anti-Pattern #1: Setters/Getters, Java Bean, POJO;
+**************************************************
+- There is no construct for a defult object instance. You can set half of the
+	paramters and it can still initiate. No validity!
+- Object instances are NOT IMMUTABLE!
+
+Anti-Pattern #2: Telescoping Constructor;
+*****************************************
+- Objects created with TC are MUTABLE
+- However, no setters cause a lot of constructors for each
+	field combination
+
+Pitfalls
+********
+- Unlike to Singleton, Prototype often not used, sometimes not clear when to use
+- Used with other patterns, for example Prototype is implemented typically with
+	some sort of registry
+- A loose definition of a framework versus a pattern is that if a pattern contains
+	other patterns, it is a framework. (this isn't always true)
+- Shallow vs. Deep Copy
+
+Prototype vs. Factory
+*********************
+	Prototype;
+	- Focused on light-weight construction
+		Either through a Copy Constructor or Clone
+	- You can choose Shallow VS Deep Copy
+	- Copy of yourself (object instance)
+	
+	Factory;
+	- Focused on dealing with flexible objects based upon the request
+	- Utilize Multiple Constructors instead of just a clone() method
+	- Utilize Concrete Instance of an object
+	- It is a fresh instance since it utilize the keyword new
+	
+Summary
+*******
+- Guarantee unique instance everytime we ask for it
+- Often refactored in
+- Can help with performance issues (heavy objects)
+- Don't always jump to a Factory, consider Prototype

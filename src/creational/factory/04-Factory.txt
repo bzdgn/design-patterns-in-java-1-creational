@@ -1,0 +1,70 @@
+CONCEPTS;
+*********
+
+- It doesn't expose an instantiation logic
+- Defer to subclasses
+- All the client typically knows about is a common interface that the factory exposes
+- Specified by architecture, implemented by user
+- Examples: Calendar, ResourceBundle, NumberFormat
+
+DESIGN;
+*******
+
+********************************
+*           Factory            *
+*______________________________*
+*                              *
+*______________________________*
+*  + factoryMethod()           *
+********************************
+              ^
+              |
+              |
+********************************
+*       Concrete Object        *
+*______________________________*
+*                              *
+*______________________________*
+*  - factoryMethod()           *
+********************************
+
+- Factory is almost the opposite of Singleton
+- Factory is responsible for creating instances and managing the lifecycle of the creation
+- Common Interface: Object created are referenced through a common interface
+- Concrete Classes: Factories will also reference multiple concrete classes or implementations
+	But the client is unaware since they are referenced through the common interface
+- Parameterized create method: Method to request an object is typically parameterized.
+	These paremeters are what we are used to determine the concrete type.
+
+Pitfalls
+********
+- Pitfalls of factory method pattern are namely Complexity.
+- Creation in subclass
+- Not Refactoring, you have to build up from the beginning
+
+Factory vs. Singleton
+*********************
+	Singleton;
+	- Returns the same instance
+		One constructor method -no args
+	- No Interface
+	- No Subclasses
+	
+	Factory;
+	- Returns various instances
+		Multiple constructors
+	- Interface driven
+	- Subclasses are always involved
+		Either via Interface or Abstract Classes/Subclassing
+	- Adaptable to environment more easily
+		Notify that a lot of frameworks are written using the
+		factory pattern where you implement them per environment
+		as you want to use them
+	
+Summary
+*******
+- Parameter driven
+- Solves complex creation in a different fashion than all the others.
+- Parameter driven construction enables us to choose a at runtime.
+- A litle complex
+- Opposite of a Singleton

@@ -1,0 +1,80 @@
+CONCEPTS;
+*********
+
+- Factory of factories
+- Factory of related objects
+- Common Interface
+- Defer to subclasses
+- Examples: DocumentBuilder (XML APIs), Frameworks
+
+DESIGN;
+*******
+
+********************************
+*        <<interface>>         *
+*       Abstract Factory       *
+*______________________________*
+*                              *
+*______________________________*
+* + concreteProduct() : Object *
+********************************
+              ^
+              |
+              |
+********************************
+*       Concrete Factory       *
+*______________________________*
+*                              *
+*______________________________*
+* + concreteProduct() : Object *
+********************************
+              ^
+              |
+              |
+********************************
+*       Concrete Product       *
+*______________________________*
+*                              *
+*______________________________*
+*                              *
+********************************
+
+- Group Factories together
+- Factory is responsible for lifecycle
+- Common Interface
+- Parameterized create methods just like the Factory
+- Composition, Development through the composition is the key difference with Factory
+
+- IMPORTANT NOTE : Instead of returning No-Arg Constructor, you can use Template Method!
+
+Pitfalls
+********
+- Complexity
+- Runtime switch
+- Pattern within a pattern
+- Problem specific
+- Starts as a Factory and refactory to Abstract Factory
+
+Factory vs. Abstract Factory
+****************************
+	Factory;
+	- Returns various instances
+		Multiple Constructors
+	- Interface driven
+	- Adabtable to environment more easily
+	
+	Abstract Factory;
+	- Implemented with a Factory
+	- Hides Factory
+	- Abstract Environment (One more abstraction layer)
+	- Built through Composition
+	- Note: It doesnt have to implement Factory but it is %99 percent true
+
+Summary
+*******
+- Group of similiar Factories
+- Complex (a lot more so than other creational design patterns)
+- Heavy abstraction (various levels of abstraction)
+- Framework pattern (other patterns solves particular problem in a broad generic way)
+
+

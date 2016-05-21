@@ -1,0 +1,53 @@
+CONCEPTS;
+*********
+
+- Only one instance created
+- Guarantees control of resource
+- Usually lazily loaded
+- Examples: Runtime, Logger, Spring Beans, Graphics Managers
+- All Spring beans are by default Spring Singletons
+
+DESIGN;
+*******
+
+********************************
+*          Singleton           *
+*______________________________*
+*  - singleton: Singleton      *
+*  - Singleton()               *
+*  + getInstance() : Singleton *
+********************************
+
+- Class is responsible for lifecycle
+- Static in nature (but not a static class)
+- Needs to b thread safe (that's why we don't use static class)
+- Private instance
+- Private constructors
+- No parameters required for constructions. If you require parameters, that is
+	typically a factory pattern.
+
+Singleton vs. Factory
+*********************
+- Singleton is commonly confused with Factory
+
+	Singleton;
+	- Singleton returns the same instance everytime with one constructor method
+		with no-args
+	- Singleton has no interface
+	
+	Factory;
+	- Returns various instances
+	- Has multiple constructors
+	- Factory is interface driven
+	- Adaptable to environment more easily
+
+Pitfalls
+********
+- Often overused
+- Difficult to unit test
+- If not careful, not thread-safe
+- Sometimes confused for Factory
+- java.util.Calendar is NOT a Singleton but a Prototype Pattern
+	because everytime you call Calendar.getInstance() you get
+	a new unique instance
+

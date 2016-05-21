@@ -1,0 +1,78 @@
+CONCEPTS;
+*********
+
+- Handles complex constructors
+- Large number of parameters
+- Immutability
+- Examples: StringBuilder, DocumentBuilder, Locale.Builder
+
+DESIGN;
+*******
+
+********************************
+*           Builder            *
+*______________________________*
+*                              *
+*______________________________*
+*  + buildPart()               *
+********************************
+              ^
+              |
+              |
+********************************
+*       Concrete Builder       *
+*______________________________*
+*                              *
+*______________________________*
+*  - buildPart()               *
+*  + getResult()               *
+********************************
+
+- A solution for determining what constructor to use ?
+- Multiple constructors are difficult to manage
+- The creation of multiple constructors with each parameter variation is
+	called Telescoping Constructor
+- Flexibility over telescoping Constructor
+- Builder Pattern is typically written with a static inner class. The
+	reason for this is to return an instance of the object that it is building
+- Calls appropriate constructor
+
+Anti-Pattern #1: Setters/Getters, Java Bean, POJO;
+**************************************************
+- There is no construct for a defult object instance. You can set half of the
+	paramters and it can still initiate. No validity!
+- Object instances are NOT IMMUTABLE!
+
+Anti-Pattern #2: Telescoping Constructor;
+*****************************************
+- Objects created with TC are MUTABLE
+- However, no setters cause a lot of constructors for each
+	field combination
+
+Pitfalls
+********
+- There is not a lot of pitfalls, only something to consider;
+- Objects created with builder typically are designed to be mutable
+- The builder pattern itself typically implemented with a static inner class
+- Unlike the prototype pattern, it isn't something usually refactored in afer the fact
+- Adds little bit complexity (constructors return each subsequent call)
+
+Builder vs. Prototype
+*********************
+- Singleton is commonly confused with Factory
+
+	Singleton;
+	- Handles complex constructors
+	- No interface required
+	- Can be a separate class
+	- Works with legacy code (can be separate class)
+	
+	Factory;
+	- Implemented around a clone method
+	- Avoids calling complex or costly constructors
+	- Difficult to implemnt in legacy code
+	
+- Both of these patterns are focused on complex constructors within one class.
+	So the builder, tries to work with complex constructors where the prototype
+	tries to avoid having called them again.
+
